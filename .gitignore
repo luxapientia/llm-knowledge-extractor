@@ -1,0 +1,19 @@
+# Environment and secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Database
+postgres_data/
+
+# Alembic migrations (generated)
+alembic/versions/*.py
+!alembic/versions/.gitkeep
