@@ -5,7 +5,7 @@ A production-quality prototype system that extracts structured knowledge from un
 ## Features
 
 - **Text Analysis**: Extracts title, topics, sentiment, and keywords from unstructured text
-- **AI Integration**: Uses OpenAI GPT-3.5-turbo with function calling for structured data extraction
+- **AI Integration**: Uses OpenAI GPT-4.1 with function calling for structured data extraction
 - **Deterministic Keywords**: spaCy-based noun frequency analysis for consistent keyword extraction
 - **PostgreSQL Storage**: Robust data persistence with SQLModel ORM
 - **RESTful API**: FastAPI-based endpoints for analysis and search
@@ -30,7 +30,7 @@ A production-quality prototype system that extracts structured knowledge from un
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/luxapientia/llm-knowledge-extractor.git
 cd llm-knowledge-extractor
 ```
 
@@ -54,6 +54,10 @@ This script will:
 ```
 
 The API will be available at `http://localhost:8000`
+
+**Interactive API Documentation:**
+- **Swagger UI**: `http://localhost:8000/docs` - **Test all endpoints directly in the browser!**
+- **ReDoc**: `http://localhost:8000/redoc` - Alternative documentation view
 
 ### Production Deployment
 
