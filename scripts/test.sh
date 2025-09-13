@@ -83,7 +83,7 @@ echo ""
 # Run tests
 if $TEST_CMD; then
     print_success "All tests passed!"
-    
+
     if [ "$COVERAGE" = true ]; then
         echo ""
         print_status "Coverage report generated in htmlcov/index.html"

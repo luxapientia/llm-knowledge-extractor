@@ -27,12 +27,12 @@ async def analyze_text(
 ):
     try:
         analysis_data = analysis_service.analyze_text(request.text)
-        
+
         analysis_result = AnalysisResult(**analysis_data)
         session.add(analysis_result)
         session.commit()
         session.refresh(analysis_result)
-        
+
         return AnalysisResponse(
             id=analysis_result.id,
             title=analysis_result.title,
@@ -42,7 +42,7 @@ async def analyze_text(
             confidence_score=analysis_result.confidence_score,
             created_at=analysis_result.created_at.isoformat()
         )
-    
+
     except ValueError:
         raise HTTPException(status_code=422, detail="Empty input")
     except Exception as e:
@@ -59,14 +59,14 @@ async def search_analyses(
     # Simple search implementation - get all records and filter in Python
     statement = select(AnalysisResult)
     all_results = session.exec(statement).all()
-    
+
     # Filter results that contain the topic in topics or keywords
     results = []
     for result in all_results:
-        if (topic.lower() in [t.lower() for t in result.topics] or 
+        if (topic.lower() in [t.lower() for t in result.topics] or
             topic.lower() in [k.lower() for k in result.keywords]):
             results.append(result)
-    
+
     return [
         AnalysisResponse(
             id=result.id,

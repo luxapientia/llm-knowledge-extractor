@@ -101,7 +101,7 @@ case $COMMAND in
     up)
         print_status "Starting application..."
         echo "Command: $COMPOSE_CMD"
-        
+
         if $COMPOSE_CMD; then
             print_success "Application started successfully"
             echo ""

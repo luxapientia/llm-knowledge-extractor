@@ -32,13 +32,13 @@ check_env_file() {
         echo "  ./scripts/setup.sh"
         return 1
     fi
-    
+
     if grep -q "your_openai_api_key_here" .env; then
         print_error "Please edit .env file and add your OpenAI API key"
         echo "  Set OPENAI_API_KEY=your_actual_api_key"
         return 1
     fi
-    
+
     return 0
 }
 

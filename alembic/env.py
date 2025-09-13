@@ -57,7 +57,7 @@ def run_migrations_online() -> None:
     """
     configuration = config.get_section(config.config_ini_section)
     configuration["sqlalchemy.url"] = settings.database_url
-    
+
     connectable = engine_from_config(
         configuration,
         prefix="sqlalchemy.",

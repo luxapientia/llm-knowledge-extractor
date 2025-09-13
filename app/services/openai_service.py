@@ -8,7 +8,7 @@ class OpenAIService:
     def __init__(self):
         openai.api_key = settings.openai_api_key
         self.client = openai.OpenAI(api_key=settings.openai_api_key)
-    
+
     def analyze_text(self, text: str) -> Dict[str, Any]:
         try:
             response = self.client.chat.completions.create(
@@ -53,7 +53,7 @@ class OpenAIService:
                 ],
                 function_call={"name": "extract_analysis"}
             )
-            
+
             function_call = response.choices[0].message.function_call
             if function_call and function_call.name == "extract_analysis":
                 import json
@@ -63,9 +63,9 @@ class OpenAIService:
                     "topics": result.get("topics", []),
                     "sentiment": Sentiment(result.get("sentiment", "neutral"))
                 }
-            
+
             raise Exception("No function call returned")
-            
+
         except Exception as e:
             raise Exception(f"LLM request failed: {str(e)}")
 
