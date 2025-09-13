@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, Depends, HTTPException
 from sqlmodel import Session, select, or_, text
 from typing import List
@@ -7,12 +8,15 @@ from app.schemas import AnalysisRequest, AnalysisResponse, ErrorResponse
 from app.services.analysis_service import analysis_service
 
 
-app = FastAPI(title="LLM Knowledge Extractor", version="1.0.0")
-
-
-@app.on_event("startup")
-def on_startup():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
     create_db_and_tables()
+    yield
+    # Shutdown (if needed)
+
+
+app = FastAPI(title="LLM Knowledge Extractor", version="1.0.0", lifespan=lifespan)
 
 
 @app.get("/health")
