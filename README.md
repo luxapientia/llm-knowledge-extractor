@@ -1,5 +1,3 @@
-# Sorry, my Wellfound account has been restricted. Please contact me instead at: trongtruong.pham192@gmail.com
-
 # LLM Knowledge Extractor
 
 A production-quality prototype system that extracts structured knowledge from unstructured text using OpenAI's function calling API and spaCy for deterministic keyword extraction.
